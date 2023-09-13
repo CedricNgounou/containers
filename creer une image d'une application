@@ -1,0 +1,19 @@
+# le but de notre tp etait de creer une image avec DockerFile voici quelques etapes que j'ai pris la peine de resumer 
+ETAPE1: Creer un repertoir pour stocker l'image 
+ mkdir < le_nom_du_repertoire>
+ il faut se mettre à l'interieur du repertoire pour passer à l'etape 2
+ETAPE2: importer le depot
+git clone suivi du lien du depot , biensur terminé par .git
+ETAPE3: Creer le fichier DockerFile 
+grace à la commande touch on peut creer le fichier suivi du nom du fichier ensuite nano pour l'editer
+ETAPE4: le contenu du DockerFile 
+il peut varier en fonction de ce que vous utiliser pour le deployer dans notre cas nous avons utiliser
+NGINX: voici à quoi l'interieur de notre fichier ressemble 
+    FROM NGNIX
+    COPY  ./usr/share/nginx/html (le point ici signifi qu'il va executer le fichier depuis la racine dans notre repertoire)
+NB: dans certains image , le DOCKERFILE se trouve déjà inutile de le creer à nouveau 
+ETAPE5: le build de l'image
+Grace à la commande Docker build --tag le_nom_de_l'image
+Biensure pour une premiere fois le build prend unpeu de temps à charger les fichiers
+ETAPE6: le lancement
+Grace à la commande docker run -d -p (le port qu'on veut attribuer :80) le_nom_image
